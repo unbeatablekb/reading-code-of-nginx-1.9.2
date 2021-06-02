@@ -178,7 +178,7 @@ matched: hello
 --- config
     location /re {
         content_by_lua '
-            local s = "hello章亦春"
+            local s = "hello绔犱害鏄�"
             local from, to, err = ngx.re.find(s, "HELLO.{2}", "iu")
             if not from then
                 ngx.say("FAIL: ", err)
@@ -191,7 +191,7 @@ matched: hello
 --- request
     GET /re
 --- response_body_like chop
-^(?:FAIL: bad argument \#2 to '\?' \(pcre_compile\(\) failed: this version of PCRE is not compiled with PCRE_UTF8 support in "HELLO\.\{2\}" at "HELLO\.\{2\}"\)|hello章亦)$
+^(?:FAIL: bad argument \#2 to '\?' \(pcre_compile\(\) failed: this version of PCRE is not compiled with PCRE_UTF8 support in "HELLO\.\{2\}" at "HELLO\.\{2\}"\)|hello绔犱害)$
 --- no_error_log
 [error]
 
@@ -543,8 +543,8 @@ matched: hello, 1234
 --- config
     location = /t {
         content_by_lua '
-            local target = "你好"
-            local regex = "你好"
+            local target = "浣犲ソ"
+            local regex = "浣犲ソ"
 
             local from, to, err = ngx.re.find(string.sub(target, 1, 4), regex, "u")
 
@@ -574,7 +574,7 @@ GET /t
 --- config
     location /re {
         content_by_lua '
-            local s = "你好"
+            local s = "浣犲ソ"
             local from, to, err = ngx.re.find(s, ".", "U")
             if from then
                 ngx.say("from: ", from)
@@ -604,7 +604,7 @@ exec opts: 2000
 --- response_body
 from: 1
 to: 3
-matched: 你
+matched: 浣�
 --- no_error_log
 [error]
 
@@ -620,7 +620,7 @@ matched: 你
 
 --- user_files
 >>> a.lua
-local re = [==[(?i:([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`´’‘\(\)]*)?\2|([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`´’‘\(\)]*)?(?!\6)([\d\w]+))]==]
+local re = [==[(?i:([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`麓鈥欌€榎(\)]*)?\2|([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`麓鈥欌€榎(\)]*)?(?!\6)([\d\w]+))]==]
 
 s = string.rep([[ABCDEFG]], 10)
 
@@ -662,7 +662,7 @@ error: pcre_exec() failed: -8
 
 --- user_files
 >>> a.lua
-local re = [==[(?i:([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`´’‘\(\)]*)?\2|([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`´’‘\(\)]*)?(?!\6)([\d\w]+))]==]
+local re = [==[(?i:([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`麓鈥欌€榎(\)]*)?\2|([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`麓鈥欌€榎(\)]*)?(?!\6)([\d\w]+))]==]
 
 s = string.rep([[ABCDEFG]], 10)
 

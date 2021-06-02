@@ -212,7 +212,7 @@ a%20b Bar
 === TEST 11: UTF-8 chars in query strings
 --- config
     location /main {
-        echo_subrequest_async GET /sub -q 'foo=你好';
+        echo_subrequest_async GET /sub -q 'foo=浣犲ソ';
     }
     location /sub {
         echo $arg_foo;
@@ -220,7 +220,7 @@ a%20b Bar
 --- request
     GET /main
 --- response_body
-你好
+浣犲ソ
 
 
 

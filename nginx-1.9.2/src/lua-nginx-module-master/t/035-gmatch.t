@@ -708,8 +708,8 @@ error: pcre_compile() failed: missing ) in "(abc"
 --- config
     location = /t {
         content_by_lua '
-            local target = "你好"
-            local regex = "你好"
+            local target = "浣犲ソ"
+            local regex = "浣犲ソ"
 
             -- Note the D here
             local it, err = ngx.re.gmatch(string.sub(target, 1, 4), regex, "u")
@@ -746,7 +746,7 @@ error: pcre_exec\(\) failed: -10
 --- config
     location /re {
         content_by_lua '
-            local it = ngx.re.gmatch("你好", ".", "U")
+            local it = ngx.re.gmatch("浣犲ソ", ".", "U")
             local m = it()
             if m then
                 ngx.say(m[0])
@@ -771,7 +771,7 @@ exec opts: 2000
 --- request
     GET /re
 --- response_body
-你
+浣�
 --- no_error_log
 [error]
 
@@ -781,7 +781,7 @@ exec opts: 2000
 --- config
     location /re {
         content_by_lua '
-            local it = ngx.re.gmatch("你好", ".", "u")
+            local it = ngx.re.gmatch("浣犲ソ", ".", "u")
             local m = it()
             if m then
                 ngx.say(m[0])
@@ -806,7 +806,7 @@ exec opts: 0
 --- request
     GET /re
 --- response_body
-你
+浣�
 --- no_error_log
 [error]
 
@@ -822,7 +822,7 @@ exec opts: 0
 
 --- user_files
 >>> a.lua
-local re = [==[(?i:([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`´’‘\(\)]*)?\2|([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`´’‘\(\)]*)?(?!\6)([\d\w]+))]==]
+local re = [==[(?i:([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`麓鈥欌€榎(\)]*)?\2|([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`麓鈥欌€榎(\)]*)?(?!\6)([\d\w]+))]==]
 
 s = string.rep([[ABCDEFG]], 10)
 
@@ -868,7 +868,7 @@ error: pcre_exec() failed: -8
 
 --- user_files
 >>> a.lua
-local re = [==[(?i:([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`´’‘\(\)]*)?\2|([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`´’‘\(\)]*)?(?!\6)([\d\w]+))]==]
+local re = [==[(?i:([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`麓鈥欌€榎(\)]*)?\2|([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`麓鈥欌€榎(\)]*)?(?!\6)([\d\w]+))]==]
 
 s = string.rep([[ABCDEFG]], 10)
 

@@ -140,7 +140,7 @@ error: pcre_compile() failed: missing ) in "(abc"
 --- config
     location /re {
         content_by_lua '
-            local s, n, err = ngx.re.sub("你好", ".", "a", "Ud")
+            local s, n, err = ngx.re.sub("浣犲ソ", ".", "a", "Ud")
             if s then
                 ngx.say("s: ", s)
             end
@@ -162,7 +162,7 @@ exec opts: 2000
 --- request
     GET /re
 --- response_body
-s: a好
+s: a濂�
 --- no_error_log
 [error]
 
@@ -172,7 +172,7 @@ s: a好
 --- config
     location /re {
         content_by_lua '
-            local s, n, err = ngx.re.sub("你好", ".", "a", "ud")
+            local s, n, err = ngx.re.sub("浣犲ソ", ".", "a", "ud")
             if s then
                 ngx.say("s: ", s)
             end
@@ -194,7 +194,7 @@ exec opts: 0
 --- request
     GET /re
 --- response_body
-s: a好
+s: a濂�
 --- no_error_log
 [error]
 

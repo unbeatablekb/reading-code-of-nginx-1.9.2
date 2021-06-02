@@ -412,7 +412,7 @@ probe end {
     }
 --- config
     location /a {
-        redis2_literal_raw_query '*3\r\n$3\r\nset\r\n$4\r\ncrlf\r\n$6\r\n亦春\r\n';
+        redis2_literal_raw_query '*3\r\n$3\r\nset\r\n$4\r\ncrlf\r\n$6\r\n浜︽槬\r\n';
         redis2_pass backend;
     }
     location /b {
@@ -426,7 +426,7 @@ probe end {
 --- request
     GET /main
 --- response_body eval
-"+OK\r\n\$6\r\n亦春\r\n"
+"+OK\r\n\$6\r\n浜︽槬\r\n"
 
 
 

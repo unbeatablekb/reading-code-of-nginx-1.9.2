@@ -947,7 +947,7 @@ This module is licensed under the BSD license.
 
 Copyright (C) 2009-2015, by Xiaozhe Wang (chaoslawful) <chaoslawful@gmail.com>.
 
-Copyright (C) 2009-2015, by Yichun "agentzh" Zhang (章亦春) <agentzh@gmail.com>, CloudFlare Inc.
+Copyright (C) 2009-2015, by Yichun "agentzh" Zhang (绔犱害鏄�) <agentzh@gmail.com>, CloudFlare Inc.
 
 All rights reserved.
 
@@ -2608,7 +2608,7 @@ lua_ssl_ciphers
 
 Specifies the enabled ciphers for requests to a SSL/TLS server in the [tcpsock:sslhandshake](#tcpsocksslhandshake) method. The ciphers are specified in the format understood by the OpenSSL library.
 
-The full list can be viewed using the “openssl ciphers” command.
+The full list can be viewed using the 鈥渙penssl ciphers鈥� command.
 
 This directive was first introduced in the `v0.9.11` release.
 
@@ -5592,9 +5592,9 @@ These options can be combined:
 
 ```nginx
 
- local m, err = ngx.re.match("hello, 美好生活", "HELLO, (.{2})", "iu")
- -- m[0] == "hello, 美好"
- -- m[1] == "美好"
+ local m, err = ngx.re.match("hello, 缇庡ソ鐢熸椿", "HELLO, (.{2})", "iu")
+ -- m[0] == "hello, 缇庡ソ"
+ -- m[1] == "缇庡ソ"
 ```
 
 The `o` option is useful for performance tuning, because the regex pattern in question will only be compiled once, cached in the worker-process level, and shared among all requests in the current Nginx worker process. The upper limit of the regex cache can be tuned via the [lua_regex_cache_max_entries](#lua_regex_cache_max_entries) directive.

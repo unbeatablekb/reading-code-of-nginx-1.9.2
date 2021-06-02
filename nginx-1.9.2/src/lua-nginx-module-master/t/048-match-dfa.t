@@ -119,7 +119,7 @@ not matched!
 --- config
     location /re {
         content_by_lua '
-            local m = ngx.re.match("你好", ".", "Ud")
+            local m = ngx.re.match("浣犲ソ", ".", "Ud")
             if m then
                 ngx.say(m[0])
             else
@@ -143,7 +143,7 @@ exec opts: 2000
 --- request
     GET /re
 --- response_body
-你
+浣�
 --- no_error_log
 [error]
 
@@ -153,7 +153,7 @@ exec opts: 2000
 --- config
     location /re {
         content_by_lua '
-            local m = ngx.re.match("你好", ".", "ud")
+            local m = ngx.re.match("浣犲ソ", ".", "ud")
             if m then
                 ngx.say(m[0])
             else
@@ -177,7 +177,7 @@ exec opts: 0
 --- request
     GET /re
 --- response_body
-你
+浣�
 --- no_error_log
 [error]
 

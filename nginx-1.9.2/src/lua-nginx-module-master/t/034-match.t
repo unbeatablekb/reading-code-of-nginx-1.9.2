@@ -225,7 +225,7 @@ hello
 --- config
     location /re {
         content_by_lua '
-            rc, err = pcall(ngx.re.match, "hello章亦春", "HELLO.{2}", "iu")
+            rc, err = pcall(ngx.re.match, "hello绔犱害鏄�", "HELLO.{2}", "iu")
             if not rc then
                 ngx.say("FAIL: ", err)
                 return
@@ -241,7 +241,7 @@ hello
 --- request
     GET /re
 --- response_body_like chop
-^(?:FAIL: bad argument \#2 to '\?' \(pcre_compile\(\) failed: this version of PCRE is not compiled with PCRE_UTF8 support in "HELLO\.\{2\}" at "HELLO\.\{2\}"\)|hello章亦)$
+^(?:FAIL: bad argument \#2 to '\?' \(pcre_compile\(\) failed: this version of PCRE is not compiled with PCRE_UTF8 support in "HELLO\.\{2\}" at "HELLO\.\{2\}"\)|hello绔犱害)$
 
 
 
@@ -874,7 +874,7 @@ hello-world
 --- config
     location /t {
         content_by_lua '
-            local m = ngx.re.match("章", [[\\u7AE0]], "uJ")
+            local m = ngx.re.match("绔�", [[\\u7AE0]], "uJ")
             if m then
                 ngx.say("matched: ", m[0])
             else
@@ -885,7 +885,7 @@ hello-world
 --- request
 GET /t
 --- response_body
-matched: 章
+matched: 绔�
 --- no_error_log
 [error]
 
@@ -919,8 +919,8 @@ nil
 --- config
     location = /t {
         content_by_lua '
-            local target = "你好"
-            local regex = "你好"
+            local target = "浣犲ソ"
+            local regex = "浣犲ソ"
 
             -- Note the D here
             local m, err = ngx.re.match(string.sub(target, 1, 4), regex, "u")
@@ -951,7 +951,7 @@ GET /t
 --- config
     location /re {
         content_by_lua '
-            local m = ngx.re.match("你好", ".", "U")
+            local m = ngx.re.match("浣犲ソ", ".", "U")
             if m then
                 ngx.say(m[0])
             else
@@ -975,7 +975,7 @@ exec opts: 2000
 --- request
     GET /re
 --- response_body
-你
+浣�
 --- no_error_log
 [error]
 
@@ -985,7 +985,7 @@ exec opts: 2000
 --- config
     location /re {
         content_by_lua '
-            local m = ngx.re.match("你好", ".", "u")
+            local m = ngx.re.match("浣犲ソ", ".", "u")
             if m then
                 ngx.say(m[0])
             else
@@ -1009,7 +1009,7 @@ exec opts: 0
 --- request
     GET /re
 --- response_body
-你
+浣�
 --- no_error_log
 [error]
 
@@ -1025,7 +1025,7 @@ exec opts: 0
 
 --- user_files
 >>> a.lua
-local re = [==[(?i:([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`´’‘\(\)]*)?\2|([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`´’‘\(\)]*)?(?!\6)([\d\w]+))]==]
+local re = [==[(?i:([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`麓鈥欌€榎(\)]*)?\2|([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`麓鈥欌€榎(\)]*)?(?!\6)([\d\w]+))]==]
 
 s = string.rep([[ABCDEFG]], 10)
 
@@ -1065,7 +1065,7 @@ error: pcre_exec() failed: -8
 
 --- user_files
 >>> a.lua
-local re = [==[(?i:([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`´’‘\(\)]*)?\2|([\s'\"`´’‘\(\)]*)?([\d\w]+)([\s'\"`´’‘\(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`´’‘\(\)]*)?(?!\6)([\d\w]+))]==]
+local re = [==[(?i:([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:=|<=>|r?like|sounds\s+like|regexp)([\s'\"`麓鈥欌€榎(\)]*)?\2|([\s'\"`麓鈥欌€榎(\)]*)?([\d\w]+)([\s'\"`麓鈥欌€榎(\)]*)?(?:!=|<=|>=|<>|<|>|\^|is\s+not|not\s+like|not\s+regexp)([\s'\"`麓鈥欌€榎(\)]*)?(?!\6)([\d\w]+))]==]
 
 s = string.rep([[ABCDEFG]], 10)
 

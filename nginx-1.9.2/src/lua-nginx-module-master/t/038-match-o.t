@@ -201,7 +201,7 @@ hello
 --- config
     location /re {
         content_by_lua '
-            local rc, m = pcall(ngx.re.match, "hello章亦春", "HELLO.{2}", "iou")
+            local rc, m = pcall(ngx.re.match, "hello绔犱害鏄�", "HELLO.{2}", "iou")
             if not rc then
                 ngx.say("error: ", m)
                 return
@@ -216,7 +216,7 @@ hello
 --- request
     GET /re
 --- response_body_like chop
-this version of PCRE is not compiled with PCRE_UTF8 support|^hello章亦$
+this version of PCRE is not compiled with PCRE_UTF8 support|^hello绔犱害$
 
 
 

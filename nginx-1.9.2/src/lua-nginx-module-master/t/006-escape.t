@@ -16,7 +16,7 @@ __DATA__
 === TEST 1: escape uri in set_by_lua
 --- config
     location /escape {
-        set_by_lua $res "return ngx.escape_uri('a 你')";
+        set_by_lua $res "return ngx.escape_uri('a 浣�')";
         echo $res;
     }
 --- request
@@ -35,14 +35,14 @@ a%20%E4%BD%A0
 --- request
 GET /unescape
 --- response_body
-a 你
+a 浣�
 
 
 
 === TEST 3: escape uri in content_by_lua
 --- config
     location /escape {
-        content_by_lua "ngx.say(ngx.escape_uri('a 你'))";
+        content_by_lua "ngx.say(ngx.escape_uri('a 浣�'))";
     }
 --- request
 GET /escape
@@ -59,7 +59,7 @@ a%20%E4%BD%A0
 --- request
 GET /unescape
 --- response_body
-a 你
+a 浣�
 
 
 
